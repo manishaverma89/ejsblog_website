@@ -15,12 +15,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+let posts = [];
 app.get("/", function(req,res){
   res.render("home", {startingContent: homeStartingContent, } );
+
+  console.log(posts);
 });
 
 app.get("/about",function(req,res){
   res.render("about", {about: aboutContent});
+
 });
 
 app.get("/contact",function(req,res){
@@ -32,8 +36,13 @@ app.get("/compose",function(req,res){
 });
 
 app.post("/compose",function(req,res){
-  const textInput= req.body.postTitle;
-  console.log(textInput);
+  const post ={
+    title: req.body.postTitle,
+    content: req.body.postBody
+  };
+  
+  posts.push(post);     //pushing post object into posts araay
+  res.redirect("/");
 });
 
 
