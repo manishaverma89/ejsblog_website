@@ -22,6 +22,7 @@ app.get("/", function(req,res){
     posts: posts 
   });
 
+
 });
 
 app.get("/about",function(req,res){
@@ -48,7 +49,16 @@ app.post("/compose",function(req,res){
 });
 
 
-
+app.get("/post/:postName",function(req,res){
+  const requestedTitle = req.params.postName;
+   posts.forEach(function(post){
+      const storedPost = post.title;
+      if (storedPost === requestedTitle){
+        console.log("Match Found");
+      }
+   });  
+  
+});
 
 
 
