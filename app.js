@@ -50,7 +50,7 @@ app.post("/compose",function(req,res){
 });
 
 
-app.get("/post/:postName",function(req,res){
+app.get("/posts/:postName",function(req,res){
   const requestedTitle = _.lowerCase(req.params.postName);    //using lodash 
   
    posts.forEach(function(post){
