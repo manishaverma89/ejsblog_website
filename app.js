@@ -59,13 +59,16 @@ app.get("/posts/:postName",function(req,res){
         res.render("post",{
           title: post.title,
           content: post.content
+          
         });
          
       }
+      
    });  
-  
+   res.redirect("/posts");
 });
 
+app.post("/post",)
 
 
 app.listen(3000, function() {
