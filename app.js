@@ -53,10 +53,14 @@ app.post("/compose",function(req,res){
 app.get("/posts/:postName",function(req,res){
   const requestedTitle = _.lowerCase(req.params.postName);    //using lodash 
   
-   posts.forEach(function(post){
+   posts.forEach(function(post){      //forEach loop for posts array 
       const storedPost = _.lowerCase(post.title);
       if (storedPost === requestedTitle){
-        console.log("Match Found");
+        res.render("post",{
+          title: post.title,
+          content: post.content
+        });
+         
       }
    });  
   
